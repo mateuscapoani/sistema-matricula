@@ -3,7 +3,11 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { UserModule } from './user/user.module'
+import { AdminModule } from './admin/admin.module'
+import { StudentModule } from './student/student.module'
+import { TeacherModule } from './teacher/teacher.module'
+import { ClassModule } from './class/class.module'
+import { SubjectModule } from './subject/subject.module'
 
 @Module({
   imports: [
@@ -16,12 +20,14 @@ import { UserModule } from './user/user.module'
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: ['dist/**/*.entity{ .ts,.js}'],
-      synchronize: false,
-      migrations: ['dist/migrations/*{.ts,.js}'],
-      migrationsTableName: 'migrations',
-      migrationsRun: true,
+      synchronize: true,
+      autoLoadEntities: true,
     }),
-    UserModule,
+    AdminModule,
+    StudentModule,
+    TeacherModule,
+    ClassModule,
+    SubjectModule,
   ],
   controllers: [AppController],
   providers: [AppService],
