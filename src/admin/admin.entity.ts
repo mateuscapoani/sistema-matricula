@@ -8,7 +8,9 @@ export class Admin {
   @Column()
   name: string
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   username: string
 
   @Column()

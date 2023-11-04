@@ -16,9 +16,12 @@ export class Class {
   id: number
 
   @Column()
-  name: string
+  dayOfTheWeek: number
 
-  @ManyToOne(() => Subject, (s) => s.class)
+  @Column()
+  shift: number
+
+  @ManyToOne(() => Subject, (s) => s.classes)
   subject: Subject
 
   @ManyToOne(() => Teacher, (t) => t.classes)

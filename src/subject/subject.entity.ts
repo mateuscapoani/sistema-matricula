@@ -6,9 +6,11 @@ export class Subject {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   name: string
 
   @ManyToOne(() => Class, (c) => c.subject)
-  class: Class[]
+  classes: Class[]
 }

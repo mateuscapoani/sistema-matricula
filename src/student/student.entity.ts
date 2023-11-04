@@ -9,7 +9,9 @@ export class Student {
   @Column()
   name: string
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   username: string
 
   @Column()
