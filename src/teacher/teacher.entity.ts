@@ -9,12 +9,6 @@ export class Teacher {
   @Column()
   name: string
 
-  @Column()
-  username: string
-
-  @Column()
-  password: string
-
   @OneToMany(() => Class, (c) => c.teacher)
   classes: Class[]
 }
