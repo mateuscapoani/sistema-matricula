@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 import { Class } from 'src/class/class.entity'
 
 @Entity()
@@ -11,6 +11,6 @@ export class Subject {
   })
   name: string
 
-  @ManyToOne(() => Class, (c) => c.subject)
+  @OneToMany(() => Class, (c) => c.subject)
   classes: Class[]
 }
