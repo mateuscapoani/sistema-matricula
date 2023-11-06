@@ -15,16 +15,16 @@ export class Class {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: false })
   dayOfTheWeek: number
 
-  @Column()
+  @Column({ nullable: false })
   shift: number
 
-  @ManyToOne(() => Subject, (s) => s.classes)
+  @ManyToOne(() => Subject, (s) => s.classes, { nullable: false })
   subject: Subject
 
-  @ManyToOne(() => Teacher, (t) => t.classes)
+  @ManyToOne(() => Teacher, (t) => t.classes, { nullable: false })
   teacher: Teacher
 
   @ManyToMany(() => Student, (s) => s.classes)

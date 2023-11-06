@@ -5,14 +5,12 @@ export class Admin {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: false })
   name: string
 
-  @Column({
-    unique: true,
-  })
+  @Column({ nullable: false, unique: true })
   username: string
 
-  @Column()
+  @Column({ nullable: false })
   password: string
 }
