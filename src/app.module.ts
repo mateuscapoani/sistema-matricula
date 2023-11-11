@@ -8,6 +8,7 @@ import { StudentModule } from './student/student.module'
 import { TeacherModule } from './teacher/teacher.module'
 import { ClassModule } from './class/class.module'
 import { SubjectModule } from './subject/subject.module'
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { SubjectModule } from './subject/subject.module'
     TeacherModule,
     ClassModule,
     SubjectModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

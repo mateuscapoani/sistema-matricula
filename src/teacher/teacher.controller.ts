@@ -6,12 +6,15 @@ import {
   Put,
   Param,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common'
 import { TeacherService } from './teacher.service'
 import { Teacher } from './teacher.entity'
 import { CreateTeacher } from './dto/create-teacher.dto'
+import { AuthAdminGuard } from 'src/auth/auth-admin.guard'
 
 @Controller('teacher')
+@UseGuards(AuthAdminGuard)
 export class TeacherController {
   constructor(private readonly teacherService: TeacherService) {}
 
