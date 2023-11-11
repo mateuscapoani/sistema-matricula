@@ -14,7 +14,7 @@ export class AuthService {
   ) {}
 
   async adminSignIn(username: string, pass: string): Promise<any> {
-    const user = await this.adminService.findOne(username)
+    const user = await this.adminService.findOneByUsername(username)
     if (user?.password !== pass) {
       throw new UnauthorizedException()
     }
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   async studentSignIn(username: string, pass: string): Promise<any> {
-    const user = await this.studentService.findOne(username)
+    const user = await this.studentService.findOneByUsername(username)
     if (user?.password !== pass) {
       throw new UnauthorizedException()
     }

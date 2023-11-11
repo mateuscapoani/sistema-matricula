@@ -21,6 +21,9 @@ export class Class {
   @Column({ nullable: false })
   shift: number
 
+  @Column({ nullable: true })
+  capacity: number
+
   @ManyToOne(() => Subject, (s) => s.classes, { nullable: false })
   subject: Subject
 

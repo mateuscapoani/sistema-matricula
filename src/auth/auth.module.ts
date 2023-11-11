@@ -15,7 +15,7 @@ import { StudentModule } from 'src/student/student.module'
     JwtModule.register({
       global: true,
       secret: authConstants.jwtSecret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '300s' },
     }),
   ],
   controllers: [AuthController],

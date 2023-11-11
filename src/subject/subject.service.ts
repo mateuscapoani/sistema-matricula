@@ -21,12 +21,18 @@ export class SubjectService {
         name: 'ASC',
         id: 'ASC',
       },
+      relations: {
+        classes: true,
+      },
     })
   }
 
   async findOne(id: number): Promise<Subject> {
-    const subject = await this.subjectRepository.findOneBy({ id })
-    if (!subject) throw new BadRequestException()
+    const subject = await this.subjectRepository.findOne({
+      where: { id },
+      relations: { classes: true },
+    })
+    if (!subject) throw new BadRequestException('Materia inexistente')
     return subject
   }
 

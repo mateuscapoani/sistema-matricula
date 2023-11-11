@@ -21,12 +21,18 @@ export class TeacherService {
         name: 'ASC',
         id: 'ASC',
       },
+      relations: {
+        classes: true,
+      },
     })
   }
 
   async findOne(id: number): Promise<Teacher> {
-    const teacher = await this.teacherRepository.findOneBy({ id })
-    if (!teacher) throw new BadRequestException()
+    const teacher = await this.teacherRepository.findOne({
+      where: { id },
+      relations: { classes: true },
+    })
+    if (!teacher) throw new BadRequestException('Professor inexistente')
     return teacher
   }
 

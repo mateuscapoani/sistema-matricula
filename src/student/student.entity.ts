@@ -9,6 +9,9 @@ export class Student {
   @Column({ nullable: false })
   name: string
 
+  @Column({ nullable: false })
+  dateOfBirth: Date
+
   @Column({ nullable: false, unique: true })
   username: string
 
