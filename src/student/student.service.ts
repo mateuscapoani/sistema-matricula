@@ -3,6 +3,7 @@ import { Student } from './student.entity'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { CreateStudent } from './dto/create-student.dto'
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class StudentService {
@@ -29,6 +30,7 @@ export class StudentService {
   }
 
   create(createStudent: CreateStudent): Promise<Student> {
+    createStudent.password = bcrypt.hashSync(createStudent.password, 8)
     return this.studentRepository.save({ ...createStudent })
   }
 

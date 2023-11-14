@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { CreateAdmin } from './dto/create-admin.dto'
 import { BadRequestException } from '@nestjs/common'
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class AdminService {
@@ -29,6 +30,7 @@ export class AdminService {
   }
 
   create(createAdmin: CreateAdmin): Promise<Admin> {
+    createAdmin.password = bcrypt.hashSync(createAdmin.password, 8)
     return this.adminRepository.save({ ...createAdmin })
   }
 

@@ -4,6 +4,7 @@ import { AuthLevel } from './auth-level.enum'
 import { LoggedUser } from './dto/logged-user.dto'
 import { AdminService } from 'src/admin/admin.service'
 import { StudentService } from 'src/student/student.service'
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,8 @@ export class AuthService {
 
   async adminSignIn(username: string, pass: string): Promise<any> {
     const user = await this.adminService.findOneByUsername(username)
-    if (user?.password !== pass) {
+    const loginresult = await bcrypt.compareSync(pass, user.password)
+    if (loginresult != true) {
       throw new UnauthorizedException()
     }
     const payload: LoggedUser = {
@@ -30,7 +32,8 @@ export class AuthService {
 
   async studentSignIn(username: string, pass: string): Promise<any> {
     const user = await this.studentService.findOneByUsername(username)
-    if (user?.password !== pass) {
+    const loginresult = bcrypt.compareSync(pass, user.password)
+    if (loginresult != true) {
       throw new UnauthorizedException()
     }
     const payload: LoggedUser = {
