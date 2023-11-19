@@ -1,5 +1,11 @@
 # Sistema de Matricula
 
+## Alunos
+
+- Gabriel da Silva Weissheimer
+- Mateus Capoani Vieira
+- Matheus Vier Soares
+
 ## Como rodar
 
 ### Instalação
