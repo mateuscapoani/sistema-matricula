@@ -15,7 +15,7 @@ import { AuthAdminGuard } from 'src/auth/auth-admin.guard'
 
 @Controller('admin')
 @UseGuards(AuthAdminGuard)
-export class StudentController {
+export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
   @Post()
@@ -41,5 +41,4 @@ export class StudentController {
   ): Promise<Admin | null> {
     return this.adminService.edit(id, CreateAdmin)
   }
-    
 }
